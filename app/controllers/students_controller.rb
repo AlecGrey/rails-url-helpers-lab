@@ -8,8 +8,15 @@ class StudentsController < ApplicationController
   def show
   end
 
-  private
+  def activate
+    set_student
+    @student.active ? (@student.active = false) : (@student.active = true)
+    @student.save
+    # byebug
+    render :nothing => true
+  end
 
+  private
     def set_student
       @student = Student.find(params[:id])
     end
