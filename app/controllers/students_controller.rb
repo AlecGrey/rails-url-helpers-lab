@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     @student.active ? (@student.active = false) : (@student.active = true)
     @student.save
     # byebug
-    render :nothing => true
+    redirect_to student_path(@student)
   end
 
   private
